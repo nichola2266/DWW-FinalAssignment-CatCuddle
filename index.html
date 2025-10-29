@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <title>Designing with web template</title>
+
+    <!-- font Heading -->     
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Strike&display=swap" rel="stylesheet">
+
+    <!--font SubHeading-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&family=Protest+Strike&display=swap" rel="stylesheet">
+
+    
+    <!-- linking html to css-->
+    <link rel="stylesheet" href="style.css">
+
+
+    <!--scripts and ressources-->
+    <!-- Adafruit IO custom library -->
+    <script src="https://cdn.jsdelivr.net/gh/methio/adafruitIO-class@latest/index.js"></script>
+    <!-- alwan color picker -->
+    <script src="https://cdn.jsdelivr.net/npm/alwan@2/dist/js/alwan.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alwan@2/dist/css/alwan.min.css"/>
+    <!-- get color name from its hex value -->
+     <script src="https://chir.ag/projects/ntc/ntc.js"></script>
+    <!-- script custom -->
+    <script src="script.js" defer></script>
+
+</head>
+
+<!--Main Focus-->
+<body>
+    <!--Header with logo on right-->
+<section class="flex flex-row justify-center">
+    <div class="heading-container">
+        <h1>CatCuddle Design</h1>
+        <img src="assets/Cat icon.png" alt="website logo" class="logo">
+    </div>
+</section>
+
+    <!--Colour-Strip-->
+    <section>
+        <div class="color-strip">
+            <div class="flex flex-row justify-center ">
+            <p class="button" id="clear">CLEAR</p>
+            <p class="button" id="save">SAVE</p>
+            <p class="button" id="senddesign">SEND DESIGN</p>
+            </div>
+        </div>
+        
+    </section>
+
+
+
+
+
+       <!--Grid Design-->
+    <main>
+
+        <div id="fill-container" class="flex flex-row justify-center">
+            <!--fill in heading-->
+            <img src="assets/Yarn_Left.png" alt="yarn left" class="yarn">
+            <h2 class="fill">FILL IN YOUR GRID</h2>
+            <img src="assets/Yarn_Right.png" alt="yarn right" class="yarn">
+        </div>
+        
+
+        <section>
+            <div class="flex justify-center"> 
+            <h2 class="ninebynine">9*9 grid</h2>
+            </div>
+            
+        <div id="grid" class="justify-center">
+            <!-- Grid cells will be generated here from script.js -->
+        </div>
+        </section>
+    </main>
+
+
+    <div class="deselect-container">
+        <button class="deselect">DESELECT ALL</button>
+    </div>
+    
+
+
+
+
+
+</body>
+
+
+</html>

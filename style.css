@@ -1,0 +1,226 @@
+/* reset predefined styles */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+/* set variables for colors and spaces */
+:root{
+
+    --c-sec-50 : #DFA350;
+    --c-sec-100 : #FFFBF0;
+    --c-sec-200 : #EEBFC2;
+    --c-sec-500 : #A67272;
+    --c-sec-900 : #EDB093; 
+    --c-sec-1000: (237,176,147);
+
+
+    --space-05 : .5em;
+    --space-1 : 1em;
+    --space-2 : 2em;
+    --space-3 : 3em;
+    --space-4 : 4em;
+
+}
+
+/* class utilities for flexbox */
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+.flex-column{
+    flex-direction: column;
+}
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+
+body {
+
+    /* heading font size and family */
+    color: var(--c-sec-500);
+    font-size : var(--space-1);
+    font-family: "Protest Strike", sans-serif;
+    margin-top: .75em;
+    letter-spacing: 3px;
+
+    /* heading container with image logo */
+   .heading-container {
+    display: flex;              
+    align-items: center;        
+    gap: 10px;  
+    margin-top: 10px;  
+    margin-bottom: 20px;            
+    }
+
+    /*logo formatting */
+    .logo {
+    width: 30px;
+    height: 30px;
+    }
+
+    /*fill header formatting*/
+    #fill-container{
+    display: flex;              
+    align-items: center;        
+    gap: 10px;  
+    margin-top: 10px;  
+    margin-bottom: 20px;  
+    }
+
+    .yarn{
+    width: 60px;
+    height: 30px;
+    margin-top: 30px;
+    }
+
+
+    /*button style*/
+    .button{
+    background-color: var(--c-sec-200);
+    color: black;
+    padding: var(--space-05) var(--space-05);
+    border-radius: var(--space-05);
+    font-family: "Pangolin", sans-serif;
+    font-size: 1em;
+    margin: var( --space-05);
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    }
+
+  #clear{
+    width: 82px;
+    height:39px;
+    }
+
+  #save{
+    width: 130px;
+    height:39px;
+    }
+
+    /*send design button*/
+   #senddesign{
+    background-color: var(--c-sec-50);
+    color: white;
+    font-family: "Protest Strike", sans-serif;
+    font-size: 1em;
+
+    padding: var(--space-05) var(--space-05);
+    border-radius: 2em;
+    margin: var( --space-05);
+    border-color: var(--c-sec-100);         /* cant get the border to show*/
+    border-width: 3em;
+    width: 140px;
+    height: 43px;
+    display: block;
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    }
+
+    .color-strip {
+    Background-color: var(--c-sec-500);
+    height: 1.5em;
+    width: 100%;
+    position: relative;
+    z-index: -1;
+    }
+
+    /*clear button*/
+  #clear {
+      align-self: flex-start;
+   }
+
+  /*Fill Button*/
+    .fill{
+    color: grey;
+    font-size : 1.5em;
+    font-family: "Protest Strike", sans-serif;
+    margin-top: 1.2em;
+    letter-spacing: 2px;
+    }
+
+  /* Deselect Button Formatting */
+  .deselect-container {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .deselect{
+  /*font */
+    color: white;
+    font-size : 1em;
+    font-family: "Protest Strike", sans-serif;
+    letter-spacing: 2px;
+  /*format*/ 
+    margin-top: 1.2em;
+    background-color: var(--c-sec-500);
+    padding: var(--space-05) 8.2em;
+    border-radius: 2em;
+    border: none;
+    cursor: pointer;           
+    display: inline-block;
+  }
+
+
+  /* main background colour */
+    background-color: var(--c-sec-100);
+}
+
+.ninebynine{
+    margin: 0.5em;
+}
+
+
+/* grid design and formatting */
+.cell {
+  background-color: pink;
+  color: #3d3d3d;
+  font-size: 0.8em;
+  font-family: "Pangolin", sans-serif;
+/*format*/
+  width: 40px;
+  height: 40px;
+  border-radius: 0.3em;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#grid {
+  display: grid;                          
+  grid-template-columns: repeat(9, 1fr); 
+  justify-content: center;                              
+  width: fit-content;            
+  gap: 3px;       
+  margin: 1em auto;
+}
