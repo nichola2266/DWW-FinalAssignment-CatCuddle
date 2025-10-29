@@ -115,12 +115,12 @@ body {
 
   #clear{
     width: 82px;
-    height:39px;
+    height:31px;
     }
 
   #save{
     width: 130px;
-    height:39px;
+    height:31px;
     }
 
     /*send design button*/
@@ -129,13 +129,12 @@ body {
     color: white;
     font-family: "Protest Strike", sans-serif;
     font-size: 1em;
-
-    padding: var(--space-05) var(--space-05);
+    border-style:solid;
+    border-color: var(--c-sec-100);                    
+    border-width: 3px;
     border-radius: 2em;
-    margin: var( --space-05);
-    border-color: var(--c-sec-100);         /* cant get the border to show*/
-    border-width: 3em;
-    width: 140px;
+
+    width: 150px;
     height: 43px;
     display: block;
     display: block;
@@ -143,7 +142,9 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    }
+   }
+
+
 
     .color-strip {
     Background-color: var(--c-sec-500);
@@ -206,8 +207,8 @@ body {
   font-size: 0.8em;
   font-family: "Pangolin", sans-serif;
 /*format*/
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
   border-radius: 0.3em;
   display: flex;
   flex-wrap: wrap;
@@ -218,9 +219,16 @@ body {
 
 #grid {
   display: grid;                          
-  grid-template-columns: repeat(9, 1fr); 
+  grid-template-columns: repeat(8, 1fr); 
   justify-content: center;                              
   width: fit-content;            
   gap: 3px;       
   margin: 1em auto;
+}
+
+.cell[data-state="off"] {
+  background-color:#EEBFC2;
+}
+.cell[data-state="on"] {
+  background-color:#be9a9d ;
 }

@@ -1,11 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    //create out own AdafruitIO object
+    const IO = new AdafruitIO("Nichola2266","apikey");
+
   const grid = document.getElementById("grid");
-  const rows = 9;
-  const cols = 9;
+  const rows = 8;
+  const cols = 8;
 
   // Generate cells with labels
-  const letters = "ABCDEFGHI"; // 9 columns → A to I
+  const letters = "ABCDEFGH"; // 8 columns → A to I
 
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
@@ -17,30 +20,51 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
-  
   // Toggle on click
-  grid.addEventListener("click", (e) => {
+  grid.addEventListener("click", (e) => {                                   
     const selectedCell = e.target;
     if (!selectedCell.classList.contains("cell")) return;
     selectedCell.dataset.state =
       selectedCell.dataset.state === "off" ? "on" : "off";
   });
 
-  // Reset
+
+// Deselect All Button
+  const deselectButton = document.getElementById("deselect");               
+  deselectButton.addEventListener("click", () => {              // something wrong with this line of code
+    grid.querySelectorAll(".cell").forEach((cell)=>{
+        cell.dataset.state = "off"
+        
+
+    });
+
+  });
+
+
+  // Reset Button
   const reset = document.getElementById("clear");
   reset.addEventListener("click", () => {
-    grid.querySelectorAll(".cell").forEach((cell) => {
+    grid.querySelectorAll(".cell").forEach((cell) => { 
       cell.dataset.state = "off";
     });
   });
 
-  // Save
+  // Save Button 
   const save = document.getElementById("save");
   save.addEventListener("click", () => {
     const states = [];
     grid.querySelectorAll(".cell").forEach((cell) => {
-      states.push(cell.dataset.state);
-    });
+    states.push(cell.dataset.state);
     console.log(states);
+    });
+    
+
+
+
   });
+
+  const feedName ="Grid-state";
+
+ 
 });
+
