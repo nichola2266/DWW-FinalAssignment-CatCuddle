@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     //create out own AdafruitIO object
-    const IO = new AdafruitIO("Nichola2266","apikey");
+    const IO = new AdafruitIO("Nichola2266","pssword");
 
   const grid = document.getElementById("grid");
   const rows = 8;
@@ -60,10 +60,29 @@ document.addEventListener("DOMContentLoaded", () => {
     
 
 
-
   });
 
-  const feedName ="Grid-state";
+
+    const senddesign = document.getElementById("senddesign");
+   sendesign.addEventListener("click", () => {
+    const states = [];
+    grid.querySelectorAll(".cell").forEach((cell) => {
+    states.push(cell.dataset.state);
+    console.log("Sending design to Adafruit IO,"payload);
+    });
+    
+    const payload = JSON.stringify(states);
+    
+     IO.postData("Grid_state", payload);
+       });
+    
+
+
+
+
+
+  const feedName ="Grid_state";
+
 
  
 });
