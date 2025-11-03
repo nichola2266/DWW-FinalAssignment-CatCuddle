@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 let currentPickerColor = "#e7e1d0ff";
 
     //create out own AdafruitIO object
-  const IO = new AdafruitIO("Nichola2266","apikey");
+  const IO = new AdafruitIO("___,___");
   const feedName ="data-color";
 
   const grid = document.getElementById("grid");
@@ -85,6 +85,7 @@ let currentPickerColor = "#e7e1d0ff";
         hsl: false,
         },
         opacity: false,
+
     });
 
 
