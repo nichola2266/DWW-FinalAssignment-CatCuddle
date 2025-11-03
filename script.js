@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+let currentPickerColor = "#e7e1d0ff";
+
     //create out own AdafruitIO object
-    const IO = new AdafruitIO("Nichola2266","pssword");
+  const IO = new AdafruitIO("Nichola2266","aio_QpDI13tZdnkkmRDCba4hBro8WFbp");
+  const feedName ="data-color";
 
   const grid = document.getElementById("grid");
   const rows = 8;
@@ -14,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let c = 0; c < cols; c++) {
       const label = `${letters[c]}${r + 1}`;
       grid.innerHTML += `
-        <div id="cell-${label}" data-state="off" class="cell">${label}</div>
+        <div id="cell-${label}" data-state="0" data-color="${currentPickerColor}" class="cell" style="background-color:${currentPickerColor}">${label}</div>
       `;
     }
   }
@@ -23,67 +26,77 @@ document.addEventListener("DOMContentLoaded", () => {
   // Toggle on click
   grid.addEventListener("click", (e) => {                                   
     const selectedCell = e.target;
-    if (!selectedCell.classList.contains("cell")) return;
-    selectedCell.dataset.state =
-      selectedCell.dataset.state === "off" ? "on" : "off";
-  });
-
-
-// Deselect All Button
-  const deselectButton = document.getElementById("deselect");               
-  deselectButton.addEventListener("click", () => {              // something wrong with this line of code
-    grid.querySelectorAll(".cell").forEach((cell)=>{
-        cell.dataset.state = "off"
-        
-
+    // we modify bg color of the clicked cell
+    selectedCell.style.backgroundColor = currentPickerColor;
+    // we want to store the data-color
+    selectedCell.dataset.color = currentPickerColor;
     });
 
-  });
+
 
 
   // Reset Button
   const reset = document.getElementById("clear");
   reset.addEventListener("click", () => {
     grid.querySelectorAll(".cell").forEach((cell) => { 
-      cell.dataset.state = "off";
+      cell.style.backgroundColor = "#e7e1d0ff"; 
+      cell.dataset.color = "#e7e1d0ff";         
+      cell.dataset.state = "0";
     });
+      console.log("Grid is cleared!");
   });
+
 
   // Save Button 
   const save = document.getElementById("save");
-  save.addEventListener("click", () => {
-    const states = [];
-    grid.querySelectorAll(".cell").forEach((cell) => {
-    states.push(cell.dataset.state);
-    console.log(states);
-    });
+    save.addEventListener("click", () => {
+      const colors = Array.from(grid.querySelectorAll(".cell")).map(cell => cell.dataset.color);
+      const payload = JSON.stringify(colors);
+      console.log("!!Successfully Saved Design!!",payload);
+      IO.postData("data-color", payload);
+
+          });
+  
+
+
+  //Send Design button
+  const senddesign = document.getElementById("senddesign");
+    senddesign.addEventListener("click", () => {
+    const colors = Array.from(grid.querySelectorAll(".cell")).map(cell => cell.dataset.color);
+    const payload = JSON.stringify(colors);
+
+    console.log("Sending design to Adafruit IO:", payload);
     
+     IO.postData("data-color", payload);
+    });
+  
+  
+
+     // ###################### Color Picker ######################
+    //color picker
+    const colorPicker = new Alwan("#color-picker", {
+        theme: "light",
+        toggle: false,
+        popover: false,
+        color: "#e7e1d0ff",
+        format: "hex",
+        margin: 5,
+        inputs: {
+        rgb: false,
+        hex: true,
+        hsl: false,
+        },
+        opacity: false,
+    });
+
+
+    // when interacting with alwan color picker
+    colorPicker.on('change', function(event) { 
+        currentPickerColor = event.hex
+        console.log(`👋🏻 - you changed color to: ${currentPickerColor}`);
+    });
 
 
   });
 
-
-    const senddesign = document.getElementById("senddesign");
-   sendesign.addEventListener("click", () => {
-    const states = [];
-    grid.querySelectorAll(".cell").forEach((cell) => {
-    states.push(cell.dataset.state);
-    console.log("Sending design to Adafruit IO,"payload);
-    });
-    
-    const payload = JSON.stringify(states);
-    
-     IO.postData("Grid_state", payload);
-       });
-    
-
-
-
-
-
-  const feedName ="Grid_state";
-
-
- 
-});
 
