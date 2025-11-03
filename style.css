@@ -252,13 +252,10 @@ body {
     justify-content: center;
     display: flex;
     align-items: center
-}
+  }
 
 
 /*hex color picker */
 .alwan {
-    border-radius: 0.3em;
+    border-radius: 0.5em;
   }
-
-
-

@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 let currentPickerColor = "#e7e1d0ff";
 
     //create out own AdafruitIO object
-  const IO = new AdafruitIO("Nichola2266","aio_QpDI13tZdnkkmRDCba4hBro8WFbp");
+  const IO = new AdafruitIO("Nichola2266","apikey");
   const feedName ="data-color";
 
   const grid = document.getElementById("grid");
@@ -34,7 +34,6 @@ let currentPickerColor = "#e7e1d0ff";
 
 
 
-
   // Reset Button
   const reset = document.getElementById("clear");
   reset.addEventListener("click", () => {
@@ -57,7 +56,6 @@ let currentPickerColor = "#e7e1d0ff";
 
           });
   
-
 
   //Send Design button
   const senddesign = document.getElementById("senddesign");
