@@ -218,9 +218,9 @@ body {
   font-size: 0.8em;
   font-family: "Pangolin", sans-serif;
 /*format*/
-  width: 45px;
-  height: 45px;
-  border-radius: 0.3em;
+  width: 15em;
+  height: 15em;
+  border-radius: 1.5em;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -236,7 +236,7 @@ body {
 
 #grid {
   display: grid;                          
-  grid-template-columns: repeat(8, 1fr); 
+  grid-template-columns: repeat(1, 1fr); 
   justify-content: center;                              
   width: fit-content;            
   gap: 3px;       

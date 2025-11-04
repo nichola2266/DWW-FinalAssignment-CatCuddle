@@ -1,78 +1,65 @@
-// file where we setup the wifi connection
-#include "config.h"
+#include <ESPmDNS.h>
+
+// creating the links
 #include <Adafruit_NeoPixel.h>
+#include "config.h"
 
-#define LED_PIN    6  // Digital pin connected to the NeoPixel data input
-#define LED_COUNT  64 // Total number of LEDs in the 8x8 matrix (8 * 8)
+// set up the 'color' feed
+AdafruitIO_Feed *color = io.feed("data-color");
 
-// NeoPixel luminosity, 0 (min) to 255 (max)
-int brightness = 20;
-// create neopixel object 
-Adafruit_NeoPixel strip(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
+//defining relevant features
+#define PIN 21
+Adafruit_NeoPixel matrix = Adafruit_NeoPixel(64, PIN, NEO_RGBW + NEO_KHZ800);
 
-
-// create a rgb color
-uint32_t red = ring.Color(255, 0, 0);
-uint32_t green = ring.Color(0, 255, 0);
-
-// set up the 'your_feed_name' feed
-AdafruitIO_Feed *your_feed_name = io.feed("data-color");
-
-void setup() {  
-  // INITIALIZE NeoPixel ring object (REQUIRED)
-  ring.begin();   
-  
-  // Set BRIGHTNESS 
-  ring.setBrightness(brightness); 
-
-  // start the serial connection
+void setup() {
+  // put your setup code here, to run once:
   Serial.begin(115200);
 
   // wait for serial monitor to open
-  while(! Serial);
+  while (!Serial);
 
   // connect to io.adafruit.com
   Serial.print("Connecting to Adafruit IO");
   io.connect();
-
-  // on message (new value) use the callback function handleMessage()
-  your_feed_name->onMessage(handleMessage);
-
+  // set up a message handler for the 'digital' feed.
+  // the handleMessage function (defined below)
+  // will be called whenever a message is
+  // received from adafruit io.
+  color->onMessage(handleDataColor);
   // wait for a connection
-  while(io.status() < AIO_CONNECTED) {
+  while (io.status() < AIO_CONNECTED) {
     Serial.print(".");
     delay(500);
   }
 
-  // we are connected
+  matrix.begin();
+  matrix.setBrightness(10);
+  matrix.show();
+
+  // now we are connected
   Serial.println();
   Serial.println(io.statusText());
-  your_feed_name->get(); // get latest value on feed
+  delay(500);
+  color->get();
 }
 
 void loop() {
-
-  // io.run(); is required for all sketches.
-  // it should always be present at the top of your loop
-  // function. it keeps the client connected to
-  // io.adafruit.com, and processes any incoming data.
+  // put your main code here, to run repeatedly:
   io.run();
-
 }
 
-// this function is called whenever an 'digital' feed message
-// is received from Adafruit IO. it was attached to
-// the 'digital' feed in the setup() function above.
-void handleMessage(AdafruitIO_Data *data) {
+// allow datacolor array connect with matrix
+void handleDataColor(AdafruitIO_Data *data) {
+  Serial.println("Fetching data color from AdafruitIO");
 
-  // Set all pixel colors to 'off'
-  grid.clear();
+  long colorLong = data->toLong();
+  Serial.println(colorLong);
 
-  // Set color to fill the ring 
-  // data is the "value" from the feed. 
-  // The method ->toNeoPixel() translate data into a valid rgb color
-  grid.fill(data->toNeoPixel());
-  
-  // Now we display color
-  grid.show(); 
+  // wipe clean
+  matrix.clear();
+  for (int i = 0; i <= 64; i++) {
+    matrix.setPixelColor(i, colorLong);
+  }
+  //make it visible in matrix
+  matrix.show();
 }

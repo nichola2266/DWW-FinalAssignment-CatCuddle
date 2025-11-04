@@ -3,12 +3,12 @@ document.addEventListener("DOMContentLoaded", () => {
 let currentPickerColor = "#e7e1d0ff";
 
     //create out own AdafruitIO object
-  const IO = new AdafruitIO("___,___");
+  const IO = new AdafruitIO("Nichola2266", "api_key");
   const feedName ="data-color";
 
   const grid = document.getElementById("grid");
-  const rows = 8;
-  const cols = 8;
+  const rows = 1;
+  const cols = 1;
 
   // Generate cells with labels
   const letters = "ABCDEFGH"; // 8 columns → A to I
@@ -46,27 +46,32 @@ let currentPickerColor = "#e7e1d0ff";
   });
 
 
+
   // Save Button 
   const save = document.getElementById("save");
-    save.addEventListener("click", () => {
-      const colors = Array.from(grid.querySelectorAll(".cell")).map(cell => cell.dataset.color);
-      const payload = JSON.stringify(colors);
-      console.log("!!Successfully Saved Design!!",payload);
-      IO.postData("data-color", payload);
-
-          });
+  save.addEventListener("click", () => {
+    const colors = Array.from(grid.querySelectorAll(".cell")).map(cell => cell.dataset.color);
+    // const payload = JSON.stringify(colors);
+    let v = colors[0].split('').filter((d,i)=>i>0)
+    let wgrb = `0x00${v[2]}${v[3]}${v[0]}${v[1]}${v[4]}${v[5]}` 
+    // let long = parseInt(`0x${colors[0].split('').filter((d,i)=>i>0).join('')}`, 16)
+    let long = parseInt(wgrb, 16)
+    const payload = JSON.stringify(long)
+    console.log("!!Successfully Saved Design!!",payload);
+    IO.postData("data-color", payload);
+  });
   
 
   //Send Design button
   const senddesign = document.getElementById("senddesign");
-    senddesign.addEventListener("click", () => {
-    const colors = Array.from(grid.querySelectorAll(".cell")).map(cell => cell.dataset.color);
-    const payload = JSON.stringify(colors);
+  senddesign.addEventListener("click", () => {
+   const colors = Array.from(grid.querySelectorAll(".cell")).map(cell => cell.dataset.color);
+   const payload = JSON.stringify(colors);
+    // const payload = JSON.stringify(`[${colors.filter((d,i) => i < 8).join(',')}]`)
 
     console.log("Sending design to Adafruit IO:", payload);
-    
-     IO.postData("data-color", payload);
-    });
+    IO.postData("data-color", payload);
+  });
   
   
 
