@@ -10,7 +10,7 @@ A schematic view of my project’s circuit.
 ![Schematic Diagram of Project](Arduino Schematics.png)
 
 ### Photographs 
-![Photograph of Project](Photo of project.jpg)
+![Photograph of Project](Photo-of-project.jpg)
 
 
 
@@ -19,7 +19,7 @@ A schematic view of my project’s circuit.
 
 <a href="https://youtube.com/shorts/cZph9LTnRzQ?feature=share
 " target="_blank"><img src="Video Image.png" 
-alt="youtube demo video" width="400" height="300" border="10" /></a>
+alt="youtube demo video" width="250" height="300" border="10" /></a>
 
 ### DWW
 Please note for best viewing please place the website view in width=412, and keep the same height ( so it can be viewed in the form of a mobile phone screen) 
