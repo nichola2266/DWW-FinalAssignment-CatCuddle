@@ -18,7 +18,7 @@ A schematic view of my project’s circuit.
 --> Here you will find the youtube video with the live demo for the web/ mobile application 
 
 <a href="https://youtube.com/shorts/cZph9LTnRzQ?feature=share
-" target="_blank"><img src="Video Image.png" 
+" target="_blank"><img src="images/Video Image.png" 
 alt="youtube demo video" width="250" height="300" border="10" /></a>
 
 ### DWW
