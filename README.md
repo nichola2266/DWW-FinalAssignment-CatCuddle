@@ -11,7 +11,7 @@ Under this folder you will find my Coding for Arduino in 2 files, 1 for Huzzah32
 A schematic view of my project’s circuit involving 3 main elements, the Adafruit NeoPixel 8*8, the Huzzah32, and a connection the electricty (to power the LED lights).
 
 ![Schematic Diagram of Project]
-(images/ Arduino-Schematics.png)
+(images/Arduino-Schematics.png)
 
 ### Photographs 
 --> Here you will find a stunning photograph of my beautiful completed AND functioning project 
