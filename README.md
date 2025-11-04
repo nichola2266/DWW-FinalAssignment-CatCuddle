@@ -7,10 +7,10 @@ Although this project didn't turn out as what I had envisioned at the start, it 
 
 ### Schematic View
 A schematic view of my project’s circuit.
-![Schematic Diagram of Project](Arduino Schematics.png)
+![Schematic Diagram of Project](images/Arduino Schematics.png)
 
 ### Photographs 
-![Photograph of Project](Photo-of-project.jpg)
+![Photograph of Project](images/Photo-of-project.jpg)
 
 
 
@@ -26,8 +26,8 @@ Please note for best viewing please place the website view in width=412, and kee
 
 #### Moodboard
 
-![figma moodboard](figma.Moodboard.png)
+![figma moodboard](images/figma.Moodboard.png)
 
 #### User flow 
 [See the user flow in figma↗](https://www.figma.com/design/zsRW52l56JcvCLIkMKmUMS/Nichola_Prototype?node-id=26-95&t=z6wLBWpUHZll1aZ0-1))
-![Figma UserFlow Diagram](UserFlow.png)
+![Figma UserFlow Diagram](images/UserFlow.png)
